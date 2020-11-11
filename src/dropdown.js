@@ -1,32 +1,26 @@
 const dropDown = (() => {
-  const { body } = document;
-  const ul = () => document.getElementsByTagName('ul');
-  const menuHtml = `
-  <ul id="menu">
-    <li>Music</li>
-    <li>Videos</li>
-    <li>Movies</li>
-    <li>Artists</li>
-    <li>Friends</li>
-    <li>Me</li>
-    <li>FAQ</li>
-    <li>Contact us</li>
-  </ul>
-  `;
+  const createMenu = () => {
+    const menuHtml = document.createElement('ul');
+    ['Music', 'Videos', 'Movies', 'Artists', 'Friends'].forEach((category) => {
+      const li = document.createElement('li');
+      li.textContent = category;
+      menuHtml.appendChild(li);
+    });
+    return menuHtml;
+  };
+  const displayDropMenu = () => {
+    const arr = createMenu();
+    for (let i = 0; i < arr.children.length; i += 1) {
+      arr.children[i].classList = 'bg-info p-4 text-white';
+    }
 
-  const displayMenu = () => {
-    body.appendChild(menuHtml);
+    return arr;
   };
 
-  const removeMenu = () => {
-    ul.remove();
-  }
-
   return {
-    displayMenu,
-    removeMenu,
-    body,
+    createMenu,
+    displayDropMenu,
   };
 })();
 
-export { dropDown }
+export { dropDown };

@@ -13,11 +13,20 @@
   "devDependencies": {
     "babel-eslint": "10.1.x",
     "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
     "eslint": "6.8.x",
     "eslint-config-airbnb-base": "14.1.x",
     "eslint-plugin-import": "2.20.x",
     "html-webpack-plugin": "^4.5.0",
+    "postcss": "^8.1.7",
+    "postcss-loader": "^4.0.4",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3"
   }
 }

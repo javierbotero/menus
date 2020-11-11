@@ -1,13 +1,7 @@
-import { dropDown } from './dropdown';
+import { queries } from './queries';
+import './assets/style.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const initialSetUp = () => {
-  const html = `
-    <div id="menu-btn">Menu<div>
-    <div id="mobile-menu-btn">Mobile Menu<div>
-    <div id="slider-btn">Slider<div>
-  `;
-
-  dropDown.body.innerHTML += html;
-};
-
-initialSetUp();
+queries.initialSetUp();
+queries.addListenerToDisplayMenus();
