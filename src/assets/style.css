@@ -10,18 +10,37 @@
 .bullets {
   bottom: 5%;
   z-index: 1;
+  cursor: pointer;
 }
 
 .arrows {
-  top: -50%;
+  top: 50%;
   width: 40px;
   height: 40px;
 }
 
 .arrow-left {
   left: 5%;
+  cursor: pointer;
 }
 
 .arrow-right {
   right: 5%;
+  cursor: pointer;
 }
+
+.sliders-container {
+  border: 10px solid black;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 800px) {
+  .sliders-container {
+    border: 80px solid black;
+  }
+}
+

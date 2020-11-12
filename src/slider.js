@@ -9,7 +9,7 @@ const slider = (() => {
     'https://lp-cms-production.imgix.net/features/2013/01/Cartagena_Colombia_cs-b9a2c77a9fe3.jpg',
   ];
   const currentSlideNumber = () => {
-    const li = domQueries.ul()[0].children;
+    const li = domQueries.ul()[0].children[0].children;
     for (let i = 0; i < li.length; i += 1) {
       if (li[i].classList.contains('slide') && li[i].classList.contains('d-block')) {
         console.log(li[i]);
@@ -22,11 +22,11 @@ const slider = (() => {
     domQueries.liSlide(oldIndex).classList.remove('d-block');
     domQueries.liSlide(oldIndex).classList.add('d-none');
     domQueries.liBullet(oldIndex).classList.remove('bg-dark', 'border-light');
-    domQueries.liBullet(oldIndex).classList.remove('bg-light', 'border-dark');
+    domQueries.liBullet(oldIndex).classList.add('bg-light', 'border-dark');
     domQueries.liSlide(newIndex).classList.remove('d-none');
     domQueries.liSlide(newIndex).classList.add('d-block');
-    domQueries.liBullet(newIndex).classList.remove('bg-dark', 'border-light');
     domQueries.liBullet(newIndex).classList.remove('bg-light', 'border-dark');
+    domQueries.liBullet(newIndex).classList.add('bg-dark', 'border-light');
   };
 
   const moveLeft = () => {
@@ -44,21 +44,23 @@ const slider = (() => {
   const displaySlider = () => {
     const slider = document.createElement('ul');
     slider.classList = 'col-7 col-md-9 float-right bg-secondary vh-100 p-0 m-0';
+    const slidersContainer = document.createElement('div');
+    slidersContainer.classList = 'sliders-container';
     const bullets = document.createElement('li');
-    bullets.classList = 'bullets position-absolute d-flex justify-content-center w-100';
+    bullets.classList = 'bullets position-absolute d-flex justify-content-center';
     const leftArrow = document.createElement('li');
     leftArrow.textContent = '<';
-    leftArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-left bg-dark border border-light text-white font-weight-bold position-relative float-left';
+    leftArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-left bg-dark border border-light text-white font-weight-bold position-absolute float-left';
     const rightArrow = document.createElement('li');
     rightArrow.textContent = '>';
-    rightArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-right bg-dark border border-light text-white font-weight-bold position-relative float-right';
+    rightArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-right bg-dark border border-light text-white font-weight-bold position-absolute float-right';
 
     pictures.forEach((url, i) => {
       const slide = document.createElement('li');
       slide.style.backgroundImage = `url(${url})`;
       slide.setAttribute('id', `slide${i}`);
-      slide.classList = `slide slide${i} ${i === 0 ? 'd-block' : 'd-none'} w-100 vh-100 rounded`;
-      slider.appendChild(slide);
+      slide.classList = `slide slide${i} ${i === 0 ? 'd-block' : 'd-none'} w-100 h-100 rounded`;
+      slidersContainer.appendChild(slide);
       const bullet = document.createElement('div');
       bullet.addEventListener('click', (e) => { moveSlideFromBullet(e); });
       bullet.setAttribute('id', `bullet${i}`);
@@ -69,9 +71,10 @@ const slider = (() => {
     leftArrow.addEventListener('click', moveLeft);
     rightArrow.addEventListener('click', moveRight);
 
-    slider.appendChild(bullets);
-    slider.appendChild(leftArrow);
-    slider.appendChild(rightArrow);
+    slidersContainer.appendChild(bullets);
+    slidersContainer.appendChild(leftArrow);
+    slidersContainer.appendChild(rightArrow);
+    slider.appendChild(slidersContainer);
     return slider;
   };
 
