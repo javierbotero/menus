@@ -12,7 +12,6 @@ const slider = (() => {
     const li = domQueries.ul()[0].children[0].children;
     for (let i = 0; i < li.length; i += 1) {
       if (li[i].classList.contains('slide') && li[i].classList.contains('d-block')) {
-        console.log(li[i]);
         return parseInt(li[i].id[li[i].id.length - 1], 10);
       }
     }
@@ -49,10 +48,14 @@ const slider = (() => {
     const bullets = document.createElement('li');
     bullets.classList = 'bullets position-absolute d-flex justify-content-center';
     const leftArrow = document.createElement('li');
-    leftArrow.textContent = '<';
+    const iconLeft = document.createElement('i');
+    iconLeft.classList = 'fas fa-arrow-circle-left';
+    leftArrow.appendChild(iconLeft);
     leftArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-left border border-light text-white font-weight-bold position-absolute float-left';
     const rightArrow = document.createElement('li');
-    rightArrow.textContent = '>';
+    const iconRight = document.createElement('i');
+    iconRight.classList = 'fas fa-arrow-circle-right';
+    rightArrow.appendChild(iconRight);
     rightArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-right border border-light text-white font-weight-bold position-absolute float-right';
 
     pictures.forEach((url, i) => {
