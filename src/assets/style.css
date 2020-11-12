@@ -1,14 +1,27 @@
 .slide {
-  background-image: url('https://news.itu.int/wp-content/uploads/2018/07/citymobility-min-e1530886118305.jpg');
   background-size: cover;
 }
 
 .bullet {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
 }
 
 .bullets {
   bottom: 5%;
   z-index: 1;
+}
+
+.arrows {
+  top: -50%;
+  width: 40px;
+  height: 40px;
+}
+
+.arrow-left {
+  left: 5%;
+}
+
+.arrow-right {
+  right: 5%;
 }

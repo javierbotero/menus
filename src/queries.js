@@ -1,23 +1,20 @@
 import { dropDown } from './dropdown';
 import { mobileMenu } from './mobileMenu';
 import { slider } from './slider';
+import { domQueries } from './domQueries';
 
 const queries = (() => {
-  const { body } = document;
-  const ul = () => document.getElementsByTagName('ul');
-  const container = () => document.getElementById('container');
-
   const display = (e) => {
-    if (ul()[0]) {
-      ul()[0].remove();
+    if (domQueries.ul()[0]) {
+      domQueries.ul()[0].remove();
     }
 
     if (e.target.classList.contains('btn-info')) {
-      body.appendChild(dropDown.displayDropMenu());
+      domQueries.body.appendChild(dropDown.displayDropMenu());
     } else if (e.target.classList.contains('btn-danger')) {
-      body.appendChild(mobileMenu.displayMobileMenu());
+      domQueries.body.appendChild(mobileMenu.displayMobileMenu());
     } else if (e.target.classList.contains('btn-warning')) {
-      body.appendChild(slider.displaySlider());
+      domQueries.body.appendChild(slider.displaySlider());
     }
   };
 
@@ -30,12 +27,11 @@ const queries = (() => {
     </div>
     `;
 
-    body.innerHTML += html;
+    domQueries.body.innerHTML += html;
   };
 
   const addListenerToDisplayMenus = () => {
-    console.log(container());
-    container().addEventListener('click', (e) => { display(e); });
+    domQueries.container().addEventListener('click', (e) => { display(e); });
   };
 
   return {

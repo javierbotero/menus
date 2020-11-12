@@ -5,3 +5,5 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 queries.initialSetUp();
 queries.addListenerToDisplayMenus();
+
+export { queries };
