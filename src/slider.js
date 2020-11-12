@@ -21,12 +21,12 @@ const slider = (() => {
   const moveSlide = (oldIndex, newIndex) => {
     domQueries.liSlide(oldIndex).classList.remove('d-block');
     domQueries.liSlide(oldIndex).classList.add('d-none');
-    domQueries.liBullet(oldIndex).classList.remove('bg-dark', 'border-light');
-    domQueries.liBullet(oldIndex).classList.add('bg-light', 'border-dark');
+    domQueries.liBullet(oldIndex).classList.remove('bg-light-bullet', 'border-dark-bullet');
+    domQueries.liBullet(oldIndex).classList.add('bg-dark-bullet', 'border-light-bullet');
     domQueries.liSlide(newIndex).classList.remove('d-none');
     domQueries.liSlide(newIndex).classList.add('d-block');
-    domQueries.liBullet(newIndex).classList.remove('bg-light', 'border-dark');
-    domQueries.liBullet(newIndex).classList.add('bg-dark', 'border-light');
+    domQueries.liBullet(newIndex).classList.remove('bg-dark-bullet', 'border-light-bullet');
+    domQueries.liBullet(newIndex).classList.add('bg-light-bullet', 'border-dark-bullet');
   };
 
   const moveLeft = () => {
@@ -50,10 +50,10 @@ const slider = (() => {
     bullets.classList = 'bullets position-absolute d-flex justify-content-center';
     const leftArrow = document.createElement('li');
     leftArrow.textContent = '<';
-    leftArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-left bg-dark border border-light text-white font-weight-bold position-absolute float-left';
+    leftArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-left border border-light text-white font-weight-bold position-absolute float-left';
     const rightArrow = document.createElement('li');
     rightArrow.textContent = '>';
-    rightArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-right bg-dark border border-light text-white font-weight-bold position-absolute float-right';
+    rightArrow.classList = 'arrows rounded-circle d-flex align-items-center justify-content-center arrow-right border border-light text-white font-weight-bold position-absolute float-right';
 
     pictures.forEach((url, i) => {
       const slide = document.createElement('li');
@@ -64,7 +64,7 @@ const slider = (() => {
       const bullet = document.createElement('div');
       bullet.addEventListener('click', (e) => { moveSlideFromBullet(e); });
       bullet.setAttribute('id', `bullet${i}`);
-      bullet.className = `bullet border ${i === 0 ? 'bg-dark border-light' : 'bg-light border-dark'} rounded-circle m-1`;
+      bullet.className = `bullet border ${i === 0 ? 'bg-light-bullet border-dark-bullet' : 'bg-dark-bullet border-light-bullet'} rounded-circle m-1`;
       bullets.appendChild(bullet);
     });
 

@@ -20,13 +20,20 @@
 }
 
 .arrow-left {
-  left: 5%;
+  left: 3%;
   cursor: pointer;
+  background-color: rgb(56, 56, 56);
 }
 
+.arrow-left:hover, .arrow-right:hover, .bullet:hover {
+  background-color: black;
+}
+
+
 .arrow-right {
-  right: 5%;
+  right: 3%;
   cursor: pointer;
+  background-color: rgb(56, 56, 56);
 }
 
 .sliders-container {
@@ -42,5 +49,21 @@
   .sliders-container {
     border: 80px solid black;
   }
+}
+
+.bg-dark-bullet {
+  background-color: rgb(87, 87, 87);
+}
+
+.border-light-bullet {
+  border: 1px solid lightgray;
+}
+
+.bg-light-bullet {
+  background-color: rgb(200, 200, 200);
+}
+
+.border-dark-bullet {
+  border: 1px solid rgb(87, 87, 87);
 }
 
