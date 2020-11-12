@@ -23,7 +23,7 @@ const queries = (() => {
 
   const initialSetUp = () => {
     const html = `
-    <div id="container" class="col-12 col-md-3 bg-light vh-100 d-flex flex-column justify-content-around">
+    <div id="container" class="col-5 col-md-3 bg-light vh-100 d-flex flex-column justify-content-around float-left">
       <div class="btn btn-info" id="menu-btn">Menu</div>
       <div class="btn btn-danger" id="mobile-menu-btn">Mobile Menu</div>
       <div class="btn btn-warning" id="slider-btn">Slider</div>

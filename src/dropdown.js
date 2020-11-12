@@ -1,6 +1,7 @@
 const dropDown = (() => {
   const createMenu = () => {
     const menuHtml = document.createElement('ul');
+    menuHtml.classList = 'col-7 col-md-9 bg-secondary float-right min-vh-100';
     ['Music', 'Videos', 'Movies', 'Artists', 'Friends'].forEach((category) => {
       const li = document.createElement('li');
       li.textContent = category;

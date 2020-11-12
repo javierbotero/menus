@@ -1,3 +1,14 @@
 .slide {
-  background-image: url('https://news.itu.int/wp-content/uploads/2018/07/citymobility-min-e1530886118305.jpg');  
+  background-image: url('https://news.itu.int/wp-content/uploads/2018/07/citymobility-min-e1530886118305.jpg');
+  background-size: cover;
+}
+
+.bullet {
+  width: 10px;
+  height: 10px;
+}
+
+.bullets {
+  bottom: 5%;
+  z-index: 1;
 }
