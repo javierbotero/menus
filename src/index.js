@@ -1,5 +1,5 @@
 import { queries } from './queries';
-import './assets/style.css';
+import './assets/style.scss';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/js/fontawesome';

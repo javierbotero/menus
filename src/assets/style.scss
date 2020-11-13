@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .slide {
   background-size: cover;
 }
@@ -83,5 +85,8 @@
 }
 
 .category {
-  font: bold 2em helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  padding: 0 50px;
 }
