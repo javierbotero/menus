@@ -119,11 +119,23 @@
   color: black;
 }
 
+@keyframes slide-up-to-bottom {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .drop-down {
   height: 88vh;
   border-bottom-right-radius: 100%;
   overflow: hidden;
+  background-color: #17a2b8;
   font: 1.2em 'Roboto', sans-serif;
+  animation-name: slide-up-to-bootom;
+  animation-duration: 1s;
 }
 
 .item-drop-down:hover {

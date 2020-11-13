@@ -19,7 +19,7 @@ const dropDown = (() => {
       arr.children[0].children[i].classList = 'item-drop-down bg-info p-4 text-white list-inline-item w-100';
     }
 
-    arr.children[0].className = 'drop-down bg-info';
+    arr.children[0].className = 'drop-down';
 
     return arr;
   };
