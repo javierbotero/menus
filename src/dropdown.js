@@ -1,12 +1,16 @@
 const dropDown = (() => {
   const createMenu = () => {
     const menuHtml = document.createElement('ul');
+    const container = document.createElement('div');
     menuHtml.classList = 'col-7 col-md-9 float-right min-vh-100';
     ['Music', 'Videos', 'Movies', 'Artists', 'Friends'].forEach((category) => {
       const li = document.createElement('li');
-      li.textContent = category;
-      menuHtml.appendChild(li);
+      const div = document.createElement('div');
+      div.textContent = category;
+      li.appendChild(div);
+      container.appendChild(li);
     });
+    menuHtml.appendChild(container);
     return menuHtml;
   };
   const displayDropMenu = () => {
