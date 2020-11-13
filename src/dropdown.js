@@ -1,3 +1,5 @@
+import { domQueries } from "./domQueries";
+
 const dropDown = (() => {
   const createMenu = () => {
     const menuHtml = document.createElement('ul');
@@ -16,7 +18,7 @@ const dropDown = (() => {
   const displayDropMenu = () => {
     const arr = createMenu();
     for (let i = 0; i < arr.children[0].children.length; i += 1) {
-      arr.children[0].children[i].classList = 'item-drop-down bg-info p-4 text-white list-inline-item w-100';
+      arr.children[0].children[i].classList = `item-drop-down item-drop-down${i} bg-info p-4 text-white list-inline-item w-100`;
     }
 
     arr.children[0].className = 'drop-down';

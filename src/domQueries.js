@@ -4,6 +4,7 @@ const domQueries = (() => {
   const container = () => document.getElementById('container');
   const liSlide = (n) => document.getElementById(`slide${n}`);
   const liBullet = (n) => document.getElementById(`bullet${n}`);
+  const dropDown = () => document.querySelector('.drop-down');
 
   return {
     body,
@@ -11,6 +12,7 @@ const domQueries = (() => {
     container,
     liSlide,
     liBullet,
+    dropDown,
   };
 })();
 

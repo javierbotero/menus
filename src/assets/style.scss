@@ -5,6 +5,23 @@
   background-color: rgb(56, 56, 56);
 }
 
+%to-right {
+  animation-name: to-right-element;
+  animation-duration: .2s;
+  animation-fill-mode: forwards;
+}
+
+%to-left {
+  animation-name: to-left-element;
+  animation-duration: .2s;
+  animation-fill-mode: forwards;
+}
+
+%to-bottom {
+  animation-name: to-bottom-element;
+  animation-duration: .5s;
+}
+
 .slide {
   background-size: cover;
 }
@@ -35,10 +52,17 @@
   background-color: black;
 }
 
-
 .arrow-right {
   right: 3%;
   @extend %buttons;
+}
+
+.to-right-slide {
+  @extend %to-right;
+}
+
+.to-left-slide {
+  @extend %to-left;
 }
 
 .sliders-container {
@@ -48,6 +72,8 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  @extend %to-bottom;
 }
 
 @media (min-width: 800px) {
@@ -80,6 +106,7 @@
 .scrollable {
   overflow-y: scroll;
   overflow-x: hidden;
+  @extend %to-bottom;
 }
 
 .scrollable::-webkit-scrollbar {
@@ -119,12 +146,36 @@
   color: black;
 }
 
-@keyframes slide-up-to-bottom {
+@keyframes to-bottom-element {
   from {
     transform: translateY(-100%);
+    animation-timing-function: ease-in;
   }
   to {
     transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes to-left-element {
+  from {
+    transform: translate(200%, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes to-right-element {
+  from {
+    transform: translate(-100%, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
   }
 }
 
@@ -134,8 +185,37 @@
   overflow: hidden;
   background-color: #17a2b8;
   font: 1.2em 'Roboto', sans-serif;
-  animation-name: slide-up-to-bootom;
-  animation-duration: 1s;
+  @extend %to-bottom;
+}
+
+.item-drop-down0, .left-icons-0, #bullet0 {
+  @extend %to-right;
+  opacity: 0;
+  animation-delay: .5s;
+}
+
+.item-drop-down1, .left-icons-1, #bullet1 {
+  @extend %to-right;
+  opacity: 0;
+  animation-delay: .8s;
+}
+
+.item-drop-down2, .left-icons-2, #bullet2 {
+  @extend %to-right;
+  opacity: 0;
+  animation-delay: 1.1s;
+}
+
+.item-drop-down3, .left-icons-3, #bullet3 {
+  @extend %to-right;
+  opacity: 0;
+  animation-delay: 1.4s;
+}
+
+.item-drop-down4, .left-icons-4, #bullet4, .arrows {
+  @extend %to-right;
+  opacity: 0;
+  animation-delay: 1.7s;
 }
 
 .item-drop-down:hover {

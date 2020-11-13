@@ -24,9 +24,9 @@ const mobileMenu = (() => {
 
     const leftColumn = document.createElement('div');
     leftColumn.classList = 'col-2 float-left bg-primary vh-100 m-0 p-0 d-flex flex-column align-items-center text-light';
-    icons.forEach((classes) => {
+    icons.forEach((classes, i) => {
       const element = document.createElement('i');
-      element.classList = `${classes} flex-grow-1 left-icons`;
+      element.classList = `${classes} flex-grow-1 left-icons left-icons-${i}`;
       leftColumn.appendChild(element);
     });
     arr.appendChild(leftColumn);

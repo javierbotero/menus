@@ -1,4 +1,5 @@
 import { domQueries } from './domQueries';
+import { queries } from './queries';
 
 const slider = (() => {
   const pictures = [
@@ -17,32 +18,53 @@ const slider = (() => {
     }
     return 0;
   };
+  const addMoveClass = (element, oldIndex, newIndex) => {
+    if ((newIndex > oldIndex && newIndex !== 4)
+        || (oldIndex === 4 && newIndex === 0)
+        || (oldIndex === 3 && newIndex === 4)) {
+      element.classList.add('to-right-slide');
+    } else if ((newIndex < oldIndex && newIndex !== 4) || (newIndex === 4 && oldIndex === 0)) {
+      element.classList.add('to-left-slide');
+    }
+  };
+  const cleanElement = (element) => {
+    if (element.classList.contains('to-right-slide')) {
+      element.classList.remove('to-right-slide');
+    } else if (element.classList.contains('to-left-slide')) {
+      element.classList.remove('to-left-slide');
+    }
+  };
   const moveSlide = (oldIndex, newIndex) => {
     domQueries.liSlide(oldIndex).classList.remove('d-block');
     domQueries.liSlide(oldIndex).classList.add('d-none');
+    cleanElement(domQueries.liSlide(oldIndex));
     domQueries.liBullet(oldIndex).classList.remove('bg-light-bullet', 'border-dark-bullet');
     domQueries.liBullet(oldIndex).classList.add('bg-dark-bullet', 'border-light-bullet');
     domQueries.liSlide(newIndex).classList.remove('d-none');
+    addMoveClass(domQueries.liSlide(newIndex), oldIndex, newIndex);
     domQueries.liSlide(newIndex).classList.add('d-block');
     domQueries.liBullet(newIndex).classList.remove('bg-dark-bullet', 'border-light-bullet');
     domQueries.liBullet(newIndex).classList.add('bg-light-bullet', 'border-dark-bullet');
   };
 
   const moveLeft = () => {
+    queries.cleanMyInterval();
     const newIndex = currentSlideNumber() - 1 < 0 ? pictures.length - 1 : currentSlideNumber() - 1;
     moveSlide(currentSlideNumber(), newIndex);
   };
   const moveRight = () => {
+    queries.cleanMyInterval();
     const newIndex = currentSlideNumber() + 1 >= pictures.length ? 0 : currentSlideNumber() + 1;
     moveSlide(currentSlideNumber(), newIndex);
   };
   const moveSlideFromBullet = (e) => {
+    queries.cleanMyInterval();
     const newIndex = parseInt(e.target.id[e.target.id.length - 1], 10);
     moveSlide(currentSlideNumber(), newIndex);
   };
   const displaySlider = () => {
     const slider = document.createElement('ul');
-    slider.classList = 'col-7 col-md-9 float-right bg-secondary vh-100 p-0 m-0';
+    slider.classList = 'col-7 col-md-9 float-right bg-dark vh-100 p-0 m-0';
     const slidersContainer = document.createElement('div');
     slidersContainer.classList = 'sliders-container';
     const bullets = document.createElement('li');
@@ -83,6 +105,7 @@ const slider = (() => {
 
   return {
     displaySlider,
+    moveRight,
   };
 })();
 
