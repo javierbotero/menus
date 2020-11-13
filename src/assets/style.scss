@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+%buttons {
+  cursor: pointer;
+  background-color: rgb(56, 56, 56);
+}
+
 .slide {
   background-size: cover;
 }
@@ -23,8 +28,7 @@
 
 .arrow-left {
   left: 3%;
-  cursor: pointer;
-  background-color: rgb(56, 56, 56);
+  @extend %buttons;
 }
 
 .arrow-left:hover, .arrow-right:hover, .bullet:hover {
@@ -34,8 +38,7 @@
 
 .arrow-right {
   right: 3%;
-  cursor: pointer;
-  background-color: rgb(56, 56, 56);
+  @extend %buttons;
 }
 
 .sliders-container {
@@ -70,8 +73,8 @@
 }
 
 .subel {
-  width: 150px!important;
-  height: 150px;
+  width: 100px!important;
+  height: 100px;
 }
 
 .scrollable {
@@ -79,14 +82,51 @@
   overflow-x: hidden;
 }
 
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
 .scrollable-li {
   overflow-x: scroll;
   overflow-y: hidden;
+}
+
+@media (max-width: 800px) {
+  .scrollable-li::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .category {
   font-family: 'Roboto', sans-serif;
   font-size: xx-large;
   font-weight: bold;
-  padding: 0 50px;
+  padding: 0 5px;
+}
+
+@media (min-width: 800px) {
+  .left-icons {
+    width: 50px!important;
+    height: 50px;
+  }
+
+  .category {
+    padding: 0 50px;
+  }
+}
+
+.left-icons:hover, .subel:hover {
+  color: black;
+}
+
+.drop-down {
+  height: 88vh;
+  border-bottom-right-radius: 100%;
+  overflow: hidden;
+  font: 1.2em 'Roboto', sans-serif;
+}
+
+.item-drop-down:hover {
+  background-color: rgb(16, 110, 122)!important;
+  cursor: pointer;
 }
