@@ -22,7 +22,7 @@ This repo is a showcase of a dropdown menu, a menu for mobiles, and a slider of 
 In order to start with the project:
 
 1. Install npm in your machine.
-2. Clone [this repository](https://github.com/javierbotero/Restaurant.git)
+2. Clone [this repository](https://github.com/javierbotero/menus.git)
 3. cd inside the project
 
 4. Run
