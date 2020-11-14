@@ -1,18 +1,18 @@
-**Menus and Slider**
+# Menus and Slider #
 
 This repo is a showcase of a dropdown menu, a menu for mobiles, and a slider of pictures. Everything is built with javascript using modules and the power of Webpack.
 
 ## Live preview
 
-[Interactive Menus and Slider]()
+[Interactive Menus and Slider](https://javierbotero.github.io/menus/)
 
-![Screenshot]()
+![Screenshot](https://github.com/javierbotero/menus/blob/master/src/assets/Screenshot%20from%202020-11-13%2018-22-17.png)
 
 ## Built With
 
 - Javascript
 - Webpack
-- ES6
+- SASS
 - Bootstrap
 - Font Awesome
 - npm
