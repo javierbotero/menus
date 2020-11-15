@@ -4,19 +4,12 @@ import { slider } from './slider';
 import { domQueries } from './domQueries';
 
 const queries = (() => {
-  let intervalId = false;
-  const cleanMyInterval = () => {
-    clearInterval(intervalId);
-    intervalId = false;
-  };
   const display = (e) => {
     if (domQueries.ul()[0]) {
       domQueries.ul()[0].remove();
     }
 
-    if (intervalId) {
-      cleanMyInterval();
-    }
+    slider.cleanMyInterval();
 
     if (e.target.classList.contains('btn-info')) {
       domQueries.body.appendChild(dropDown.displayDropMenu());
@@ -24,7 +17,7 @@ const queries = (() => {
       domQueries.body.appendChild(mobileMenu.displayMobileMenu());
     } else if (e.target.classList.contains('btn-warning')) {
       domQueries.body.appendChild(slider.displaySlider());
-      intervalId = setInterval(slider.moveRight, 5000);
+      slider.startInterval();
     }
   };
 
@@ -48,7 +41,6 @@ const queries = (() => {
     initialSetUp,
     display,
     addListenerToDisplayMenus,
-    cleanMyInterval,
   };
 })();
 

@@ -1,5 +1,4 @@
 import { domQueries } from './domQueries';
-import { queries } from './queries';
 
 const slider = (() => {
   const pictures = [
@@ -9,6 +8,10 @@ const slider = (() => {
     'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Bogot%C3%A1_panorama_viewed_from_Torre_Colpatria.jpg/800px-Bogot%C3%A1_panorama_viewed_from_Torre_Colpatria.jpg',
     'https://lp-cms-production.imgix.net/features/2013/01/Cartagena_Colombia_cs-b9a2c77a9fe3.jpg',
   ];
+  let intervalId = false;
+  const startInterval = () => {
+    intervalId = setInterval(moveRight, 5000);
+  };
   const currentSlideNumber = () => {
     const li = domQueries.ul()[0].children[0].children;
     for (let i = 0; i < li.length; i += 1) {
@@ -17,6 +20,12 @@ const slider = (() => {
       }
     }
     return 0;
+  };
+  const cleanMyInterval = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = false;
+    }
   };
   const addMoveClass = (element, oldIndex, newIndex) => {
     if ((newIndex > oldIndex && newIndex !== 4)
@@ -48,19 +57,24 @@ const slider = (() => {
   };
 
   const moveLeft = () => {
-    queries.cleanMyInterval();
     const newIndex = currentSlideNumber() - 1 < 0 ? pictures.length - 1 : currentSlideNumber() - 1;
     moveSlide(currentSlideNumber(), newIndex);
   };
   const moveRight = () => {
-    queries.cleanMyInterval();
     const newIndex = currentSlideNumber() + 1 >= pictures.length ? 0 : currentSlideNumber() + 1;
     moveSlide(currentSlideNumber(), newIndex);
   };
   const moveSlideFromBullet = (e) => {
-    queries.cleanMyInterval();
     const newIndex = parseInt(e.target.id[e.target.id.length - 1], 10);
     moveSlide(currentSlideNumber(), newIndex);
+  };
+  const addListenerForInterval = (element) => {
+    element.addEventListener('mouseover', () => {
+      cleanMyInterval();
+    });
+    element.addEventListener('mouseout', () => {
+      startInterval();
+    });
   };
   const displaySlider = () => {
     const slider = document.createElement('ul');
@@ -69,6 +83,7 @@ const slider = (() => {
     slidersContainer.classList = 'sliders-container';
     const bullets = document.createElement('li');
     bullets.classList = 'bullets position-absolute d-flex justify-content-center';
+    addListenerForInterval(bullets);
     const leftArrow = document.createElement('li');
     const iconLeft = document.createElement('i');
     iconLeft.classList = 'fas fa-arrow-circle-left';
@@ -85,6 +100,7 @@ const slider = (() => {
       slide.style.backgroundImage = `url(${url})`;
       slide.setAttribute('id', `slide${i}`);
       slide.classList = `slide slide${i} ${i === 0 ? 'd-block' : 'd-none'} w-100 h-100 rounded`;
+      addListenerForInterval(slide);
       slidersContainer.appendChild(slide);
       const bullet = document.createElement('div');
       bullet.addEventListener('click', (e) => { moveSlideFromBullet(e); });
@@ -94,7 +110,9 @@ const slider = (() => {
     });
 
     leftArrow.addEventListener('click', moveLeft);
+    addListenerForInterval(leftArrow);
     rightArrow.addEventListener('click', moveRight);
+    addListenerForInterval(rightArrow);
 
     slidersContainer.appendChild(bullets);
     slidersContainer.appendChild(leftArrow);
@@ -106,6 +124,9 @@ const slider = (() => {
   return {
     displaySlider,
     moveRight,
+    intervalId,
+    cleanMyInterval,
+    startInterval,
   };
 })();
 
